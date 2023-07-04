@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Base de datos de I.E.P Virgen de Lourdes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      color: #333;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    
+    .btn {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #fff;
+      background-color: #337ab7;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background-color: #135293;
+    }
+    #demo {
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+        }
+  </style>
+</head>
+<body>
+  <h1>Base de datos de I.E.P Virgen de Lourdes</h1>
+  
+  <div class="container">
+    <button class="btn" onclick="consulta1()">Consulta 1</button>
+    <button class="btn" onclick="consulta2()">Consulta 2</button>
+    <button class="btn" onclick="consulta3()">Consulta 3</button>
+  </div>
+  
+    <p id="demo"></p>
+  <script>
+    function consulta1() {
+      // Lógica para la consulta 1
+    document.getElementById("demo").textContent = "Consulta 1";
+
+    fetch("http://127.0.0.1:5000/consulta1", {
+        method: "GET",
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+    })
+        .then(response => response.json())
+        .then(json => {
+            console.log(json['resultado']);
+            sessionStorage.setItem("resultado",JSON.stringify(json.resultado));
+            document.location.href = "consulta1.html";
+        })
+        .catch(err => {
+            console.log('Solicitud Fallida', err);
+            document.getElementById("demo").textContent = "No realizar la consulta";
+            document.getElementById("demo").classList.add("error");
+        });
+      alert("Consulta 1 realizada");
+    }
+    
+    function consulta2() {
+      // Lógica para la consulta 2
+    document.getElementById("demo").textContent = "Consulta 2";
+
+    fetch("http://127.0.0.1:5000/consulta2", {
+        method: "GET",
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+    })
+        .then(response => response.json())
+        .then(json => {
+            console.log(json['resultado']);
+            sessionStorage.setItem("resultado",JSON.stringify(json.resultado));
+            document.location.href = "consulta2.html";
+        })
+        .catch(err => {
+            console.log('Solicitud Fallida', err);
+            document.getElementById("demo").textContent = "No realizar la consulta";
+            document.getElementById("demo").classList.add("error");
+        });
+ 
+      alert("Consulta 2 realizada");
+    }
+    
+    function consulta3() {
+      // Lógica para la consulta 3
+    document.getElementById("demo").textContent = "Consulta 3";
+
+    fetch("http://127.0.0.1:5000/consulta3", {
+        method: "GET",
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+    })
+        .then(response => response.json())
+        .then(json => {
+            console.log(json['resultado']);
+            sessionStorage.setItem("resultado",JSON.stringify(json.resultado));
+            document.location.href = "consulta3.html";
+        })
+        .catch(err => {
+            console.log('Solicitud Fallida', err);
+            document.getElementById("demo").textContent = "No realizar la consulta";
+            document.getElementById("demo").classList.add("error");
+        });
+ 
+
+      alert("Consulta 3 realizada");
+    }
+  </script>
+</body>
+</html>

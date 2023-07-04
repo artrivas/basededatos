@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resultado de consulta</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      color: #333;
+    }
+    
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 30px;
+    }
+    
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Resultado de consulta</h1>
+  
+  <table>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+    </tr>
+    <tbody id="resultados"></tbody>
+  </table>
+
+  <script>
+    var resultados = JSON.parse(sessionStorage.getItem("resultado"));
+    
+    var resultadosHTML = "";
+    for (var i = 0; i < resultados.length; i++) {
+      resultadosHTML += "<tr>";
+      resultadosHTML += "<td>" + resultados[i].nombre + "</td>";
+      resultadosHTML += "<td>" + resultados[i].apellido + "</td>";
+      resultadosHTML += "</tr>";
+    }
+    
+    document.getElementById("resultados").innerHTML = resultadosHTML;
+  </script>
+</body>
+</html>
